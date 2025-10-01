@@ -1,0 +1,5 @@
+/* Define a fonte padrão para o corpo do documento */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #E0F2FE; /* Um azul muito claro, quase branco */
+}

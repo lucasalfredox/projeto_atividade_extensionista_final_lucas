@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafie-se pela Saúde</title>
+    <!-- Link para o arquivo de estilo CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Inclui a biblioteca Tailwind CSS para estilização responsiva -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inclui a fonte Inter do Google Fonts para um visual moderno -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="antialiased text-gray-800 flex flex-col min-h-screen">
+
+    <!-- Cabeçalho principal responsivo -->
+    <header class="bg-blue-800 p-4 shadow-lg flex flex-col md:flex-row md:justify-between md:items-center">
+        <!-- Título centralizado no topo em telas menores, e à esquerda em telas maiores -->
+        <div class="w-full md:w-auto text-center md:text-left mb-2 md:mb-0">
+            <h1 class="text-3xl md:text-4xl font-bold text-white">Desafie-se pela Saúde</h1>
+        </div>
+        <!-- Navegação flexível que se adapta ao tamanho da tela -->
+        <nav class="w-full md:w-auto flex justify-center md:justify-end">
+            <ul class="flex space-x-4 md:space-x-6">
+                <li><a href="#" id="home-link" class="text-lg md:text-xl font-medium text-white hover:text-gray-200 transition-colors">Início</a></li>
+                <li><a href="#" id="blog-link" class="text-lg md:text-xl font-medium text-white hover:text-gray-200 transition-colors">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Subtítulo no cabeçalho -->
+    <div class="bg-blue-600 p-2 text-center shadow-inner">
+        <h2 id="header-subtitle" class="text-xl font-light text-white">Sua Gincana de Bem-Estar</h2>
+    </div>
+
+    <!-- Conteúdo principal centralizado e flexível -->
+    <main class="flex-grow flex justify-center items-center p-4">
+        <!-- Div para a tela inicial de inserção de nome, com largura adaptável -->
+        <div id="start-screen" class="bg-white rounded-xl shadow-2xl p-6 md:p-10 max-w-lg w-full text-center">
+            <h3 class="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">Bem-vindo!</h3>
+            <p class="text-gray-600 mb-6">Insira seu nome para começar a sua gincana de bem-estar:</p>
+
+            <!-- Formulário de entrada -->
+            <form id="start-form">
+                <div class="mb-4 text-left">
+                    <label for="nome" class="block text-gray-700 text-lg font-medium mb-2">Seu Nome:</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                </div>
+                
+                <!-- Botão de ação -->
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white text-lg font-bold py-3 px-6 rounded-lg shadow-md transition-colors">
+                    Começar Gincana
+                </button>
+            </form>
+        </div>
+
+        <!-- Div para a tela de desafios (inicialmente escondida) -->
+        <div id="challenges-screen" class="bg-white rounded-xl shadow-2xl p-6 md:p-10 max-w-lg w-full text-center hidden">
+            <!-- Seção de pontuação -->
+            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Sua Pontuação</h3>
+            <div id="score-display" class="text-6xl font-bold text-blue-500 mb-8">0</div>
+
+            <!-- Seção de desafios -->
+            <h3 class="text-2xl font-semibold text-gray-900 mb-4">Desafios de Bem-Estar</h3>
+            <div class="space-y-4 text-left">
+                <!-- Desafios individuais com layout flexível para garantir o alinhamento em diferentes tamanhos de tela -->
+                <div class="flex flex-col sm:flex-row items-center justify-between p-4 bg-gray-100 rounded-lg shadow-inner">
+                    <span class="text-gray-700 mb-2 sm:mb-0">Beba 2 litros de água hoje. (+10 pontos)</span>
+                    <button class="complete-btn w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors" data-points="10">Concluir</button>
+                </div>
+                <!-- Desafio 2 -->
+                <div class="flex flex-col sm:flex-row items-center justify-between p-4 bg-gray-100 rounded-lg shadow-inner">
+                    <span class="text-gray-700 mb-2 sm:mb-0">Faça 15 minutos de alongamento. (+15 pontos)</span>
+                    <button class="complete-btn w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors" data-points="15">Concluir</button>
+                </div>
+                <!-- Desafio 3 -->
+                <div class="flex flex-col sm:flex-row items-center justify-between p-4 bg-gray-100 rounded-lg shadow-inner">
+                    <span class="text-gray-700 mb-2 sm:mb-0">Coma uma porção de frutas. (+5 pontos)</span>
+                    <button class="complete-btn w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors" data-points="5">Concluir</button>
+                </div>
+                 <!-- Desafio 4 -->
+                 <div class="flex flex-col sm:flex-row items-center justify-between p-4 bg-gray-100 rounded-lg shadow-inner">
+                    <span class="text-gray-700 mb-2 sm:mb-0">Suba escadas em vez de usar o elevador. (+20 pontos)</span>
+                    <button class="complete-btn w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors" data-points="20">Concluir</button>
+                </div>
+                <!-- Desafio 5 -->
+                <div class="flex flex-col sm:flex-row items-center justify-between p-4 bg-gray-100 rounded-lg shadow-inner">
+                    <span class="text-gray-700 mb-2 sm:mb-0">Leia um livro por 10 minutos. (+10 pontos)</span>
+                    <button class="complete-btn w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors" data-points="10">Concluir</button>
+                </div>
+                <!-- Desafio 6 -->
+                <div class="flex flex-col sm:flex-row items-center justify-between p-4 bg-gray-100 rounded-lg shadow-inner">
+                    <span class="text-gray-700 mb-2 sm:mb-0">Medite por 5 minutos. (+25 pontos)</span>
+                    <button class="complete-btn w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors" data-points="25">Concluir</button>
+                </div>
+                <!-- Desafio 7 -->
+                <div class="flex flex-col sm:flex-row items-center justify-between p-4 bg-gray-100 rounded-lg shadow-inner">
+                    <span class="text-gray-700 mb-2 sm:mb-0">Cozinhe uma refeição saudável. (+30 pontos)</span>
+                    <button class="complete-btn w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors" data-points="30">Concluir</button>
+                </div>
+                 <!-- Desafio 8 -->
+                 <div class="flex flex-col sm:flex-row items-center justify-between p-4 bg-gray-100 rounded-lg shadow-inner">
+                    <span class="text-gray-700 mb-2 sm:mb-0">Passe 30 minutos na natureza. (+20 pontos)</span>
+                    <button class="complete-btn w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors" data-points="20">Concluir</button>
+                </div>
+                 <!-- Desafio 9 -->
+                 <div class="flex flex-col sm:flex-row items-center justify-between p-4 bg-gray-100 rounded-lg shadow-inner">
+                    <span class="text-gray-700 mb-2 sm:mb-0">Durma 7-8 horas esta noite. (+25 pontos)</span>
+                    <button class="complete-btn w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors" data-points="25">Concluir</button>
+                </div>
+            </div>
+
+            <!-- Botões de ação, agora com o novo botão "Avançar" -->
+            <div class="flex flex-col sm:flex-row justify-center mt-8 space-y-4 sm:space-y-0 sm:space-x-4">
+                <button id="reset-btn" class="w-full sm:w-auto bg-red-500 hover:bg-red-600 text-white text-lg font-bold py-3 px-6 rounded-lg shadow-md transition-colors">
+                    Resetar Gincana
+                </button>
+                <button id="avancar-btn" class="w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white text-lg font-bold py-3 px-6 rounded-lg shadow-md transition-colors">
+                    Avançar
+                </button>
+            </div>
+        </div>
+
+        <!-- Nova Div para a tela do Blog (conteúdo atualizado) -->
+        <div id="blog-screen" class="bg-white rounded-xl shadow-2xl p-6 md:p-10 max-w-lg w-full text-left hidden">
+            <h3 class="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 text-center">A Gincana de Bem-Estar</h3>
+            <p class="text-gray-700 leading-relaxed mb-6">
+                No mundo acelerado de hoje, encontrar tempo e motivação para cuidar da nossa saúde física e mental é um desafio constante. É fácil cair na rotina e deixar de lado os hábitos que realmente nos fazem bem. Mas e se a saúde se tornasse uma aventura divertida? É com essa filosofia que nasceu o projeto "Desafie-se pela Saúde: Sua Gincana de Bem-Estar". Nossa missão é transformar a jornada do autocuidado em uma experiência lúdica e recompensadora.
+            </p>
+            
+            <!-- Substitua este URL pela URL da sua imagem preferida. -->
+            <img src="./img/18_08_2025, 22_48_40.png" alt="Espaço para sua imagem" class="w-full rounded-lg shadow-md mb-6">
+            
+            <h4 class="text-2xl font-semibold text-gray-900 mb-2 mt-4">Transformando Hábitos em Jogo</h4>
+            <p class="text-gray-700 leading-relaxed mb-6">
+                A gincana utiliza a força da gamificação para incentivar a consistência. Ao invés de uma lista de tarefas tediosa, oferecemos desafios com pontuações. Cada gole de água, cada minuto de meditação, cada passo dado em uma escada se torna uma conquista. Esse sistema de recompensas não só celebra cada pequena vitória, mas também cria um ciclo de motivação que nos encoraja a ir além. Cuidar de si mesmo deixa de ser uma obrigação e se torna uma busca por superação pessoal.
+            </p>
+
+            <!-- Substitua este URL pela URL da sua imagem preferida. -->
+            <img src="./img/ultimaofot.png" alt="Espaço para sua imagem" class="w-full rounded-lg shadow-md mb-6">
+
+            <h4 class="text-2xl font-semibold text-gray-900 mb-2 mt-4">O Impacto na Sua Vida</h4>
+            <p class="text-gray-700 leading-relaxed mb-6">
+                O projeto vai muito além de uma simples soma de pontos. Ao engajar-se nos desafios, você adquire conhecimento prático e real sobre seu próprio corpo e mente. A gincana é uma ferramenta educativa que o capacita a fazer escolhas mais conscientes e saudáveis no dia a dia. Você descobrirá que o bem-estar é construído passo a passo, e que pequenas mudanças podem gerar resultados significativos e duradouros na sua saúde e qualidade de vida.
+            </p>
+            
+            <!-- Substitua este URL pela URL da sua imagem preferida. -->
+            <img src=".//img/yimg.png" alt="Espaço para sua imagem" class="w-full rounded-lg shadow-md mb-6">
+
+            <h4 class="text-2xl font-semibold text-gray-900 mb-2 mt-4">Nossos Objetivos</h4>
+            <p class="text-gray-700 leading-relaxed mb-4">
+                Com o <b>"Desafie-se pela Saúde"</b>, esperamos alcançar os seguintes objetivos fundamentais:
+            </p>
+            <ul class="list-disc list-inside text-gray-700 leading-relaxed space-y-2 mb-4">
+                <li>
+                    -<b>Hábitos Saudáveis</b> Incentivar a hidratação, a atividade física, a alimentação balanceada e o cuidado com o bem-estar mental de forma lúdica e interativa.
+                </li>
+                <li>
+                    -<b>Estimular a Conscientização</b>: Aumentar a percepção sobre a importância da saúde e do autocuidado por meio de desafios práticos e testes de conhecimento.
+                </li>
+                <li>
+                    -<b>Motivar a Rotina Contínua</b>: Oferecer uma ferramenta que encoraje os participantes a manterem uma rotina de bem-estar, fortalecendo a autoeficácia na gestão da própria saúde.
+                </li>
+                <li>
+                    -<b>Disseminar Informação Relevante</b>: Compartilhar conhecimentos práticos sobre os diferentes pilares da saúde para capacitar os usuários em suas escolhas diárias.
+                </li>
+            </ul>
+        </div>
+    </main>
+
+    <!-- Rodapé com o ano e informações de copyright -->
+    <footer class="bg-blue-800 p-4 mt-auto text-white text-center">
+        <div class="container mx-auto">
+            <p>&copy; 2025 Desafie-se pela Saúde. Todos os direitos reservados. Lucas Alfredo</p>
+        </div>
+    </footer>
+
+    <!-- Widget flutuante no canto inferior direito -->
+    <div class="fixed bottom-4 right-4 z-50">
+        <button class="w-12 h-12 bg-gray-800 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-gray-700 transition-colors">
+            <!-- Ícone de chat (exemplo com SVG) -->
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 14v-2h8v2H6zm10-4H6V8h10v2z"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Modal de Mensagens (agora genérico) -->
+    <div id="message-modal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-xl shadow-2xl p-6 md:p-10 max-w-sm w-full text-center">
+            <h3 id="modal-title" class="text-3xl font-bold text-blue-600 mb-4"></h3>
+            <p id="message-text" class="text-gray-700 text-lg mb-6"></p>
+            <div class="space-y-4">
+                <button id="close-modal-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white text-lg font-bold py-3 px-6 rounded-lg shadow-md transition-colors">
+                    Fechar
+                </button>
+                <button id="go-to-start-btn" class="w-full bg-green-500 hover:bg-green-600 text-white text-lg font-bold py-3 px-6 rounded-lg shadow-md transition-colors">
+                    Voltar ao Início
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Link para o arquivo JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>
